@@ -65,7 +65,7 @@ Valores por defecto usados en el proyecto:
 host     = localhost
 port     = 3306
 user     = root
-password = datatest2025
+password = {coloca la clave a tu base datos}
 database = retailtech
 ```
 

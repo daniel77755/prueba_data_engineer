@@ -37,7 +37,7 @@ MYSQL = {
     "host":     "localhost",
     "port":     3306,
     "user":     "root",
-    "password": "datatest2025",
+    "password": "",
     "database": "retailtech",
 }
 

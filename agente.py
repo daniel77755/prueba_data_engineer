@@ -42,7 +42,7 @@ MYSQL = {
     "host":     "localhost",
     "port":     3306,
     "user":     "root",
-    "password": "datatest2025",
+    "password": "",
     "database": "retailtech",
 }
 
@@ -345,7 +345,7 @@ GEMINI_MODELS = [
     "gemini-2.5-flash",
     "gemini-2.5-flash-lite",
 ]
-GOOGLE_API_KEY = "AIzaSyDeVqR63Dvz5PtQJ6xKkiNLqEYhfjS0LxE"
+GOOGLE_API_KEY = ""
 
 
 def build_agent():
