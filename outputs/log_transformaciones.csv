@@ -1,0 +1,15 @@
+timestamp,tabla,campo,regla,registros_afectados,accion
+2026-03-25T23:11:04.535334,clientes,cliente_id,R1_pk_no_nula,0,marcar en regla_calidad
+2026-03-25T23:11:04.535334,pedidos,pedido_id,R1_pk_no_nula,0,marcar en regla_calidad
+2026-03-25T23:11:04.535334,detalle_pedidos,item_id,R1_pk_no_nula,0,marcar en regla_calidad
+2026-03-25T23:11:04.535334,productos,producto_id,R1_pk_no_nula,0,marcar en regla_calidad
+2026-03-25T23:11:04.536336,eventos,evento_id,R1_pk_no_nula,0,marcar en regla_calidad
+2026-03-25T23:11:04.537335,clientes,cliente_id,R2_pk_duplicada,0,marcar en regla_calidad
+2026-03-25T23:11:04.537335,pedidos,pedido_id,R2_pk_duplicada,42,marcar en regla_calidad
+2026-03-25T23:11:04.537335,detalle_pedidos,item_id,R2_pk_duplicada,0,marcar en regla_calidad
+2026-03-25T23:11:04.539433,clientes,email,R3_email_formato,0,nulificar email inválido; marcar en regla_calidad
+2026-03-25T23:11:04.540475,pedidos,total_neto,R4_total_neto_positivo,0,marcar en regla_calidad
+2026-03-25T23:11:04.541482,detalle_pedidos,cantidad,R5_cantidad_positiva,0,marcar en regla_calidad
+2026-03-25T23:11:04.543995,clientes,telefono,R6_telefono_sin_letras,25,nulificar telefono con letras; marcar en regla_calidad
+2026-03-25T23:11:04.554433,pedidos,fecha_pedido,R7_fecha_no_futura,0,marcar en regla_calidad
+2026-03-25T23:11:04.554433,productos,precio_venta,R8_precio_positivo,0,marcar en regla_calidad
