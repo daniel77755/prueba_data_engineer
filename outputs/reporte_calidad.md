@@ -1,5 +1,5 @@
 # Reporte de Calidad de Datos
-**Generado:** 2026-03-25 23:11:08
+**Generado:** 2026-03-25 23:58:09
 
 ## CLIENTES
 - Registros totales: 300

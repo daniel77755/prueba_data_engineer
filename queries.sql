@@ -20,11 +20,20 @@ limit 5) nomprod; -- Esta consulta permite obtener una lista de los nombres de l
 
 select pais, count(cliente_id) clientes_por_pais from retailtech.clientes where aplica_retencion_dias = 'no' group by pais; -- Esta consulta permite obtener el total de clientes por país, el impacto hacia negocio es que permite conocer la cantidad de clientes potenciales por pais.
 
-select p.pais_envio, cast(date_format(fecha_pedido, '%Y-01-01') as date) anio, sum(total_neto) resumen_ventas_por_pais from
-(select pais_envio, fecha_pedido, total_neto, row_number() over (partition by pedido_id, cliente_id, fecha_pedido) unicos from retailtech.pedidos
-where aplica_retencion_dias = 'no') p
-where p.unicos = 1 group by pais_envio
-having pais_envio in ('Colombia','México'); -- Esta consulta permite conocer el resumen de ventas para los paises de Colombia y Méxivo, el impacto hacia negocio al reconocer como le fueron en ventas a esos dos paises cada año.
+SELECT 
+    c.pais,
+    COUNT(DISTINCT c.cliente_id)                                    AS clientes_activos,
+    COUNT(DISTINCT p.pedido_id)                                     AS total_pedidos,
+    ROUND(SUM(p.total_neto), 0)                                     AS ventas_totales_cop,
+    ROUND(SUM(p.total_neto) / COUNT(DISTINCT p.pedido_id), 0)       AS ticket_promedio,
+    ROUND(SUM(p.total_neto) / COUNT(DISTINCT c.cliente_id), 0)      AS revenue_por_cliente
+FROM retailtech.pedidos p
+INNER JOIN retailtech.clientes c ON p.cliente_id = c.cliente_id
+WHERE c.pais IN ('Colombia', 'México')
+  AND p.aplica_retencion_dias = 'no'
+  AND p.estado = 'entregado'
+GROUP BY c.pais
+ORDER BY ventas_totales_cop DESC; -- Esta consulta permite conocer el resumen de ventas para los paises de Colombia y México, el impacto hacia negocio al reconocer como le fueron en ventas a esos dos paises cada año.
 
 select p.estado, count(*) total_pedidos
 from (select estado, row_number() over (partition by pedido_id, cliente_id, fecha_pedido) unicos from retailtech.pedidos where aplica_retencion_dias = 'no') p
